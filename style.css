@@ -691,12 +691,16 @@ hr {
 .play-icon-inner {
     width: 14px;
     height: 14px;
-    background-color: currentColor;
-    transition: clip-path 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-    clip-path: polygon(20% 10%, 20% 90%, 20% 90%, 20% 10%, 80% 50%, 80% 50%, 80% 50%, 80% 50%); /* Play Triangle */
+    background-color: rgba(0, 0, 0, 0.85); /* Explicit visible color matching --color-text */
+    display: block;
+    transition: clip-path 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+                -webkit-clip-path 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    -webkit-clip-path: polygon(20% 10%, 20% 90%, 20% 90%, 20% 90%, 20% 90%, 80% 50%, 80% 50%, 80% 50%); /* Play Triangle */
+    clip-path: polygon(20% 10%, 20% 90%, 20% 90%, 20% 90%, 20% 90%, 80% 50%, 80% 50%, 80% 50%); /* Play Triangle */
 }
 
 .audio-play-btn.playing .play-icon-inner {
+    -webkit-clip-path: polygon(20% 10%, 20% 90%, 40% 90%, 40% 10%, 60% 10%, 60% 90%, 80% 90%, 80% 10%); /* Pause Bars */
     clip-path: polygon(20% 10%, 20% 90%, 40% 90%, 40% 10%, 60% 10%, 60% 90%, 80% 90%, 80% 10%); /* Pause Bars */
 }
 
