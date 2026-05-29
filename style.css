@@ -624,11 +624,11 @@ hr {
    ========================================================================== */
 
 .soundtrack-divider {
-    background: rgba(0, 0, 0, 0.15); /* matching --color-border */
+    background: rgba(0, 0, 0, 0.7); /* Matching credits column hr line */
     border: 0;
     height: 1px;
     display: block;
-    margin-top: var(--spacing-xl);
+    margin-top: 1.4rem;
     margin-bottom: var(--spacing-lg);
 }
 
@@ -696,6 +696,22 @@ hr {
 
 .play-icon path {
     transition: d 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.play-icon .path-left {
+    d: path("M 6,4 L 13,8 L 13,16 L 6,20 Z");
+}
+
+.play-icon .path-right {
+    d: path("M 13,8 L 20,12 L 20,12 L 13,16 Z");
+}
+
+.audio-play-btn.playing .play-icon .path-left {
+    d: path("M 6,4 L 10,4 L 10,20 L 6,20 Z");
+}
+
+.audio-play-btn.playing .play-icon .path-right {
+    d: path("M 14,4 L 18,4 L 18,20 L 14,20 Z");
 }
 
 .audio-progress-container {
