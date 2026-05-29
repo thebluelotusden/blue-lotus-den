@@ -163,10 +163,18 @@ function handleRoute() {
     const panelDetail = document.getElementById('panel-project-detail');
     const navProjects = document.getElementById('nav-projects');
     const navInfo = document.getElementById('nav-info');
+    const clockContainer = document.getElementById('clock-container');
     
     // Reset state: Hide panels and deactivate nav links
     [panelProjects, panelInfo, panelDetail].forEach(p => p.classList.remove('active'));
     [navProjects, navInfo].forEach(n => n.classList.remove('active'));
+    
+    // Hide clock when panel overlays are open
+    if (hash === '#projects' || hash === '#information' || hash.startsWith('#project-')) {
+        clockContainer.style.display = 'none';
+    } else {
+        clockContainer.style.display = 'block';
+    }
     
     // Route matching
     if (hash === '#projects') {
