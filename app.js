@@ -43,21 +43,23 @@ function handleRoute() {
     
     // Select elements
     const panelTriumph = document.getElementById('panel-triumph');
+    const panelLonelyGuy = document.getElementById('panel-lonely-guy');
     const panelInfo = document.getElementById('panel-information');
     const navTriumph = document.getElementById('nav-triumph');
+    const navLonelyGuy = document.getElementById('nav-lonely-guy');
     const navInfo = document.getElementById('nav-info');
     const clockContainer = document.getElementById('clock-container');
     
     // Reset state: Hide panels and deactivate nav links
-    [panelTriumph, panelInfo].forEach(p => {
+    [panelTriumph, panelLonelyGuy, panelInfo].forEach(p => {
         if (p) p.classList.remove('active');
     });
-    [navTriumph, navInfo].forEach(n => {
+    [navTriumph, navLonelyGuy, navInfo].forEach(n => {
         if (n) n.classList.remove('active');
     });
     
     // Hide clock when panel overlays are open
-    if (hash === '#triumph' || hash === '#information') {
+    if (hash === '#triumph' || hash === '#lonely-guy' || hash === '#information') {
         if (clockContainer) clockContainer.style.display = 'none';
     } else {
         if (clockContainer) clockContainer.style.display = 'block';
@@ -68,6 +70,10 @@ function handleRoute() {
         panelTriumph.classList.add('active');
         if (navTriumph) navTriumph.classList.add('active');
         panelTriumph.querySelector('.panel-content-inner').scrollTop = 0;
+    } else if (hash === '#lonely-guy' && panelLonelyGuy) {
+        panelLonelyGuy.classList.add('active');
+        if (navLonelyGuy) navLonelyGuy.classList.add('active');
+        panelLonelyGuy.querySelector('.panel-content-inner').scrollTop = 0;
     } else if (hash === '#information' && panelInfo) {
         panelInfo.classList.add('active');
         if (navInfo) navInfo.classList.add('active');
