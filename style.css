@@ -241,6 +241,11 @@ hr {
     pointer-events: none; /* Let clicks pass to the backdrop link */
     display: flex;
     justify-content: flex-end; /* Aligns page content to the right edge */
+    visibility: hidden;
+}
+
+.overlay-panel.active {
+    visibility: visible;
 }
 
 /* Transparent backdrop behind the panel for clickout detection */
@@ -251,7 +256,11 @@ hr {
     width: 100%;
     height: 100%;
     background-color: transparent;
-    pointer-events: auto; /* Clickable */
+    pointer-events: none; /* Blocked when inactive */
+}
+
+.overlay-panel.active .panel-backdrop {
+    pointer-events: auto; /* Enabled only when panel is active */
 }
 
 /* 64% layout wrapper with 10rem left margin padding */
