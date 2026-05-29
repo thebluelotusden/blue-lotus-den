@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blue Lotus Den — Portfolio</title>
+    <!-- Google Fonts: Inter (Sans-serif) and Cormorant Garamond (Serif) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Live Digital Clock (Pinned Top Right) -->
+    <div id="clock-container" class="pinned-top-right">
+        <span class="digital-clock" id="digital-clock">00:00:00</span>
+    </div>
+
+    <div class="content-wrapper">
+        <!-- Profile / Sidebar Section (Left Part on Desktop) -->
+        <main class="profile-section">
+            <div class="sidebar-layout">
+                <!-- Branding and Navigation -->
+                <div class="navigation-unit">
+                    <h1 class="site-title"><a href="#" id="logo-link">Blue Lotus Den</a></h1>
+                    <nav class="site-nav">
+                        <ul>
+                            <li><a href="#projects" id="nav-projects">Projects</a></li>
+                            <li><a href="#information" id="nav-info">Information</a></li>
+                            <li class="nav-spacer"></li>
+                            <li><a href="mailto:contact@bluelotusden.com" id="nav-email">Email</a></li>
+                            <li><a href="https://www.instagram.com/bluelotusden/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                
+                <!-- Intro text (Right column of profile section on desktop) -->
+                <div class="intro-unit">
+                    <h2 class="editorial-heading">Art, stillness, and spatial resonance.</h2>
+                    <p class="body-copy">
+                        Blue Lotus Den is a creative sanctuary exploring the boundaries between material substance and quiet space. Through tactile research, painting, and immersive installation, our work invites a slower rhythm of observation, finding form in the transient and the overlooked.
+                    </p>
+                    <p class="body-copy">
+                        Rooted in organic processes and minimalist geometry, the studio collaborates with architects, designers, and curators to develop site-specific installations that engage the senses and cultivate internal stillness.
+                    </p>
+                </div>
+            </div>
+        </main>
+
+        <!-- Dynamic Overlay Panels (Right Part on Desktop) -->
+        
+        <!-- Projects Overlay Panel -->
+        <section id="panel-projects" class="overlay-panel">
+            <div class="panel-header">
+                <button class="close-btn" aria-label="Close panel">( Close )</button>
+            </div>
+            <div class="panel-content">
+                <div class="gallery-grid">
+                    <!-- Project Item 1 -->
+                    <div class="gallery-item" data-project-id="lotus-blossom">
+                        <div class="image-wrapper">
+                            <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 300'><rect width='100%' height='100%' fill='%23e0e0e0'/></svg>" alt="Lotus Blossom Study" class="gallery-image" loading="lazy">
+                        </div>
+                        <div class="caption">
+                            Lotus Blossom Study, 2026, Ink on Rice Paper, 45 × 60 cm<br>
+                            Photo courtesy of Blue Lotus Studio
+                        </div>
+                    </div>
+                    <!-- Project Item 2 -->
+                    <div class="gallery-item" data-project-id="submerged-shadows">
+                        <div class="image-wrapper">
+                            <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'><rect width='100%' height='100%' fill='%23e0e0e0'/></svg>" alt="Submerged Shadows" class="gallery-image" loading="lazy">
+                        </div>
+                        <div class="caption">
+                            Submerged Shadows, 2025, Acrylic on Canvas, 120 × 90 cm<br>
+                            Photo courtesy of Blue Lotus Studio
+                        </div>
+                    </div>
+                    <!-- Project Item 3 -->
+                    <div class="gallery-item" data-project-id="ephemeral-waters">
+                        <div class="image-wrapper">
+                            <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 300'><rect width='100%' height='100%' fill='%23e0e0e0'/></svg>" alt="Ephemeral Waters" class="gallery-image" loading="lazy">
+                        </div>
+                        <div class="caption">
+                            Ephemeral Waters, 2025, Digital Projection, Dimensions Variable<br>
+                            Photo courtesy of Blue Lotus Studio
+                        </div>
+                    </div>
+                    <!-- Project Item 4 -->
+                    <div class="gallery-item" data-project-id="echoes-silence">
+                        <div class="image-wrapper">
+                            <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 300'><rect width='100%' height='100%' fill='%23e0e0e0'/></svg>" alt="Echoes of Silence" class="gallery-image" loading="lazy">
+                        </div>
+                        <div class="caption">
+                            Echoes of Silence, 2024, Stoneware & Lotus Pond Clay, 30 × 30 × 45 cm<br>
+                            Photo courtesy of Blue Lotus Studio
+                        </div>
+                    </div>
+                    <!-- Project Item 5 -->
+                    <div class="gallery-item" data-project-id="floating-meditation">
+                        <div class="image-wrapper">
+                            <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'><rect width='100%' height='100%' fill='%23e0e0e0'/></svg>" alt="Floating Meditation" class="gallery-image" loading="lazy">
+                        </div>
+                        <div class="caption">
+                            Floating Meditation, 2026, Mixed Media Installation, 240 × 180 × 120 cm<br>
+                            Photo courtesy of Blue Lotus Studio
+                        </div>
+                    </div>
+                    <!-- Project Item 6 -->
+                    <div class="gallery-item" data-project-id="whispering-reeds">
+                        <div class="image-wrapper">
+                            <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 300'><rect width='100%' height='100%' fill='%23e0e0e0'/></svg>" alt="Whispering Reeds" class="gallery-image" loading="lazy">
+                        </div>
+                        <div class="caption">
+                            Whispering Reeds, 2024, Woven Reed and Thread, 80 × 160 cm<br>
+                            Photo courtesy of Blue Lotus Studio
+                        </div>
+                    </div>
+                </div>
+                <div class="top-link-wrapper">
+                    <a href="#" class="top-link">( Top )</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Information Overlay Panel -->
+        <section id="panel-information" class="overlay-panel">
+            <div class="panel-header">
+                <button class="close-btn" aria-label="Close panel">( Close )</button>
+            </div>
+            <div class="panel-content info-content">
+                <div class="info-intro">
+                    <p class="body-copy">
+                        Blue Lotus Den (est. 2024) is the project space and collaborative practice of artist and designer S. Chen, based on the northeast coast. The studio works cross-disciplinarily, creating works that bridge traditional eastern aesthetics with modern minimalist expression.
+                    </p>
+                </div>
+                <div class="info-image-wrapper">
+                    <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 400'><rect width='100%' height='100%' fill='%23e0e0e0'/></svg>" alt="Blue Lotus Den Studio View" class="info-image" loading="lazy">
+                </div>
+                <div class="info-columns">
+                    <!-- Column 1: Education & Employment -->
+                    <div class="info-column">
+                        <hr>
+                        <span class="small-caps">Education</span>
+                        <p class="info-item">
+                            Master of Fine Arts (MFA)<br>
+                            Rhode Island School of Design<br>
+                            2021 – 2023
+                        </p>
+                        <p class="info-item">
+                            Bachelor of Fine Arts (BFA)<br>
+                            Cooper Union, New York<br>
+                            2016 – 2020
+                        </p>
+
+                        <hr>
+                        <span class="small-caps">Employment</span>
+                        <p class="info-item">
+                            Independent Practice<br>
+                            Blue Lotus Den Studio<br>
+                            2024 – Present
+                        </p>
+                        <p class="info-item">
+                            Design Consultant<br>
+                            Kengo Kuma & Associates, Tokyo<br>
+                            2023 – 2024
+                        </p>
+                    </div>
+
+                    <!-- Column 2: Exhibitions -->
+                    <div class="info-column">
+                        <hr>
+                        <span class="small-caps">Exhibitions</span>
+                        <p class="info-item">
+                            (<em>Upcoming</em>) Solo Exhibition: Silence in Bloom<br>
+                            Lotus Sanctuary Gallery, New York<br>
+                            Fall 2026
+                        </p>
+                        <p class="info-item">
+                            Group Show: Resonant Margins<br>
+                            Boston Center for the Arts<br>
+                            2025
+                        </p>
+                        <p class="info-item">
+                            Solo Show: Ephemeral Currents<br>
+                            Gagosian (Creative Space), NY<br>
+                            2025
+                        </p>
+                        <p class="info-item">
+                            MFA Thesis Exhibition: Form & Void<br>
+                            RISD Museum, Providence<br>
+                            2023
+                        </p>
+                    </div>
+
+                    <!-- Column 3: Awards & Press -->
+                    <div class="info-column">
+                        <hr>
+                        <span class="small-caps">Awards</span>
+                        <p class="info-item">
+                            Pollock-Krasner Foundation Grant<br>
+                            Recipient<br>
+                            2025
+                        </p>
+                        <p class="info-item">
+                            RISD Graduate Fellowship<br>
+                            2021 – 2023
+                        </p>
+
+                        <hr>
+                        <span class="small-caps">Press</span>
+                        <p class="info-item">
+                            "The Poetics of Water and Clay: Blue Lotus Den"<br>
+                            <em>Art in America</em>, Interview by A. Stone<br>
+                            2025
+                        </p>
+                        <p class="info-item">
+                            "10 Studios Redefining Modern Minimalism"<br>
+                            <em>Wallpaper* Magazine</em><br>
+                            2024
+                        </p>
+                    </div>
+                </div>
+                <div class="top-link-wrapper">
+                    <a href="#" class="top-link">( Top )</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Project Detail Overlay Panel -->
+        <section id="panel-project-detail" class="overlay-panel detail-panel">
+            <div class="panel-header detail-header">
+                <span class="detail-title-nav" id="detail-project-title">Project Title</span>
+                <button class="close-btn" id="detail-close-btn" aria-label="Close details">( Back )</button>
+            </div>
+            <div class="panel-content detail-content">
+                <div class="hero-image-wrapper">
+                    <img id="detail-hero-image" src="" alt="Project Hero" class="detail-hero-image">
+                </div>
+                
+                <div class="detail-meta-section">
+                    <div class="detail-meta-col">
+                        <span class="caption-label">Overview:</span>
+                    </div>
+                    <div class="detail-meta-col">
+                        <p id="detail-overview-text" class="body-copy">
+                            Project details and narrative descriptions will load dynamically here.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="detail-grid-header">
+                    <span class="caption-label">Detail Images</span>
+                </div>
+                <div class="detail-gallery-grid" id="detail-images-container">
+                    <!-- Detail thumbnails will be populated dynamically -->
+                </div>
+
+                <div class="detail-footer-quote">
+                    <p id="detail-quote-text" class="editorial-heading italic-quote">
+                        "Quietude is not the absence of sound, but the presence of focus."
+                    </p>
+                </div>
+                <div class="top-link-wrapper">
+                    <a href="#" class="top-link">( Top )</a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Scripts -->
+    <script src="app.js"></script>
+</body>
+</html>

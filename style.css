@@ -1,0 +1,683 @@
+/* ==========================================================================
+   BLUE LOTUS DEN — CORE DESIGN SYSTEM (style.css)
+   ========================================================================== */
+
+:root {
+    /* Color Palette */
+    --color-bg: #ffffff;
+    --color-text: rgba(0, 0, 0, 0.85);       /* Premium high-contrast charcoal */
+    --color-text-dim: rgba(0, 0, 0, 0.75);   /* Secondary body text */
+    --color-text-muted: rgba(0, 0, 0, 0.4);  /* Clock and decorative elements */
+    --color-border: rgba(0, 0, 0, 0.15);     /* Panel borders and separators */
+    --color-hover: rgba(0, 0, 0, 0.6);
+    
+    /* Typography */
+    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --font-serif: 'Cormorant Garamond', Georgia, serif;
+    
+    /* Spacing & Layout */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 3rem;
+    --sidebar-width: 44%; /* Percent of screen for the fixed layout on desktop */
+}
+
+/* ==========================================================================
+   RESET & BASE STYLES
+   ========================================================================== */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-sans);
+    font-size: 16px;
+    line-height: 1.25;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+/* ==========================================================================
+   TYPOGRAPHY UTILITIES
+   ========================================================================== */
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: normal;
+    margin: 0;
+}
+
+.site-title {
+    font-family: var(--font-sans);
+    font-size: 3.5rem;
+    font-weight: 700;
+    line-height: 0.8;
+    letter-spacing: -0.02em;
+    text-transform: none;
+    margin-bottom: var(--spacing-lg);
+}
+
+.site-title a {
+    color: var(--color-text);
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+}
+
+.site-title a:hover {
+    opacity: 0.7;
+}
+
+.editorial-heading {
+    font-family: var(--font-serif);
+    font-size: 2.2rem;
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.15;
+    color: var(--color-text-dim);
+    margin-bottom: var(--spacing-md);
+}
+
+.body-copy {
+    font-family: var(--font-sans);
+    font-size: 1.125rem;
+    font-weight: 400;
+    line-height: 1.35;
+    color: var(--color-text-dim);
+    margin-bottom: var(--spacing-md);
+}
+
+.body-copy:last-child {
+    margin-bottom: 0;
+}
+
+.caption {
+    font-family: var(--font-sans);
+    font-size: 0.825rem;
+    font-weight: 400;
+    line-height: 1.25;
+    color: var(--color-text-dim);
+    letter-spacing: -0.01em;
+}
+
+.small-caps {
+    font-variant: small-caps;
+    text-transform: lowercase;
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 0.875rem;
+    letter-spacing: 0.05em;
+    color: var(--color-text-dim);
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+}
+
+a:hover {
+    opacity: 0.7;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid var(--color-text);
+    height: 1px;
+    margin-top: var(--spacing-lg);
+    margin-bottom: var(--spacing-xs);
+    display: block;
+}
+
+/* ==========================================================================
+   LIVE DIGITAL CLOCK (Top Right)
+   ========================================================================== */
+
+.pinned-top-right {
+    position: fixed;
+    top: var(--spacing-md);
+    right: var(--spacing-md);
+    z-index: 1000;
+    text-align: right;
+    pointer-events: none; /* Allows clicking through if background element is present */
+}
+
+.digital-clock {
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    color: var(--color-text-muted);
+    font-weight: 400;
+    letter-spacing: 0.02em;
+}
+
+/* ==========================================================================
+   LAYOUT STRUCTURE
+   ========================================================================== */
+
+.content-wrapper {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+}
+
+/* Main Profile / Sidebar Layout */
+.profile-section {
+    width: var(--sidebar-width);
+    padding: var(--spacing-xl) var(--spacing-lg) var(--spacing-xl) var(--spacing-md);
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+}
+
+.sidebar-layout {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: var(--spacing-md);
+    height: 100%;
+    align-content: flex-start;
+}
+
+/* Navigation Unit (Left Column of Sidebar) */
+.navigation-unit {
+    grid-column: span 4;
+}
+
+.site-nav ul {
+    list-style: none;
+}
+
+.site-nav li {
+    font-size: 1.1rem;
+    line-height: 1.4;
+    margin-bottom: 0.25rem;
+}
+
+.site-nav li a {
+    color: var(--color-text);
+    font-weight: 500;
+}
+
+.site-nav li a.active {
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
+.site-nav .nav-spacer {
+    height: var(--spacing-sm);
+}
+
+/* Intro Unit (Right Column of Sidebar) */
+.intro-unit {
+    grid-column: span 8;
+    padding-top: 0.25rem; /* Slight adjustment to align with navigation top */
+}
+
+/* ==========================================================================
+   DYNAMIC PANELS (Right Overlays)
+   ========================================================================== */
+
+.overlay-panel {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 500;
+    background-color: var(--color-bg);
+    border-left: 1px solid var(--color-border);
+    padding-left: var(--sidebar-width); /* Push panel content to the right side */
+    
+    /* Animation State (Hidden by default) */
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(30px);
+    transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.overlay-panel.active {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(0);
+}
+
+/* Custom Scrollbar for scrollable panels */
+.panel-content {
+    height: 100%;
+    overflow-y: auto;
+    padding: var(--spacing-xl) var(--spacing-lg) var(--spacing-xl) var(--spacing-lg);
+    -webkit-overflow-scrolling: touch;
+}
+
+.panel-header {
+    position: absolute;
+    top: var(--spacing-md);
+    right: var(--spacing-lg);
+    z-index: 510;
+    display: flex;
+    justify-content: flex-end;
+    width: auto;
+}
+
+/* Panel Close Button */
+.close-btn {
+    background: none;
+    border: none;
+    font-family: var(--font-sans);
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--color-text);
+    cursor: pointer;
+    padding: var(--spacing-xs);
+    transition: opacity 0.2s ease;
+}
+
+.close-btn:hover {
+    opacity: 0.7;
+}
+
+/* Top Link (Return to Top) */
+.top-link-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: var(--spacing-xl);
+}
+
+.top-link {
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    color: var(--color-text-dim);
+    font-weight: 500;
+}
+
+/* ==========================================================================
+   PROJECTS PANEL: GALLERY GRID
+   ========================================================================== */
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-lg);
+}
+
+.gallery-item {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.image-wrapper {
+    width: 100%;
+    overflow: hidden;
+    background-color: #f7f7f7;
+    margin-bottom: var(--spacing-xs);
+    position: relative;
+    aspect-ratio: 4 / 3; /* Unified ratio for clean grid; will adjust based on actual design */
+}
+
+/* Handles portrait aspect ratios beautifully */
+.gallery-item:nth-child(odd) .image-wrapper {
+    aspect-ratio: 2 / 3;
+}
+
+.gallery-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: filter 0.3s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.gallery-item:hover .gallery-image {
+    filter: brightness(0.95);
+    transform: scale(1.02);
+}
+
+.gallery-item .caption {
+    margin-top: 0.25rem;
+    pointer-events: none; /* Let clicks pass through to gallery-item */
+}
+
+/* ==========================================================================
+   INFORMATION PANEL: GRID & STRUCTURE
+   ========================================================================== */
+
+.info-content {
+    max-width: 1000px;
+}
+
+.info-intro {
+    max-width: 600px;
+    margin-bottom: var(--spacing-lg);
+}
+
+.info-image-wrapper {
+    width: 100%;
+    aspect-ratio: 3 / 2;
+    overflow: hidden;
+    margin-bottom: var(--spacing-xl);
+    background-color: #f7f7f7;
+}
+
+.info-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.info-columns {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-lg);
+}
+
+.info-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.info-item {
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    line-height: 1.4;
+    color: var(--color-text-dim);
+    margin-bottom: var(--spacing-md);
+    padding-top: var(--spacing-xs);
+}
+
+.info-item em {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 500;
+}
+
+/* ==========================================================================
+   PROJECT DETAIL PANEL
+   ========================================================================== */
+
+.detail-panel {
+    z-index: 600; /* Sits on top of the regular panels */
+}
+
+.detail-header {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    padding-left: var(--sidebar-width);
+    height: 60px;
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(8px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--color-border);
+    z-index: 610;
+}
+
+.detail-title-nav {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    font-style: italic;
+    font-weight: 500;
+    color: var(--color-text);
+    padding-left: var(--spacing-lg);
+}
+
+.detail-header .close-btn {
+    margin-right: var(--spacing-lg);
+}
+
+.detail-content {
+    padding-top: calc(60px + var(--spacing-lg));
+}
+
+.hero-image-wrapper {
+    width: 100%;
+    aspect-ratio: 3 / 2;
+    overflow: hidden;
+    margin-bottom: var(--spacing-xl);
+    background-color: #f7f7f7;
+}
+
+.detail-hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.detail-meta-section {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-xl);
+}
+
+.detail-meta-col:first-child {
+    grid-column: span 3;
+}
+
+.detail-meta-col:last-child {
+    grid-column: span 9;
+}
+
+.caption-label {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 0.875rem;
+    letter-spacing: 0.02em;
+    color: var(--color-text-dim);
+    text-transform: uppercase;
+}
+
+.detail-grid-header {
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: var(--spacing-xs);
+    margin-bottom: var(--spacing-lg);
+}
+
+.detail-gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-xl);
+}
+
+.detail-gallery-grid .image-wrapper {
+    aspect-ratio: 2 / 3; /* Portrait style details */
+    margin-bottom: 0;
+}
+
+.detail-footer-quote {
+    padding: var(--spacing-xl) 0;
+    text-align: center;
+    border-top: 1px solid var(--color-border);
+}
+
+.italic-quote {
+    font-size: 1.8rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN & MOBILE OPTIMIZATIONS
+   ========================================================================== */
+
+@media (max-width: 1024px) {
+    :root {
+        --sidebar-width: 50%;
+    }
+}
+
+@media (max-width: 768px) {
+    :root {
+        --spacing-md: 1rem;
+        --spacing-lg: 1.5rem;
+        --spacing-xl: 2.5rem;
+    }
+    
+    html, body {
+        font-size: 15px;
+    }
+    
+    /* Live clock layout adjustments */
+    .pinned-top-right {
+        top: 0.75rem;
+        right: 1rem;
+    }
+    
+    .digital-clock {
+        font-size: 0.875rem;
+    }
+
+    /* Stack sidebar and content sections vertically */
+    .profile-section {
+        position: relative;
+        width: 100%;
+        height: auto;
+        padding: var(--spacing-xl) var(--spacing-md) var(--spacing-lg) var(--spacing-md);
+    }
+    
+    .sidebar-layout {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-lg);
+    }
+    
+    .navigation-unit, .intro-unit {
+        width: 100%;
+    }
+    
+    .site-title {
+        font-size: 2.75rem;
+        margin-bottom: var(--spacing-md);
+    }
+    
+    .site-nav ul {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--spacing-sm);
+    }
+    
+    .site-nav li {
+        margin-bottom: 0;
+    }
+    
+    .site-nav .nav-spacer {
+        display: none;
+    }
+    
+    .editorial-heading {
+        font-size: 1.8rem;
+    }
+
+    /* Overlay panels become full screen mobile drawers sliding from the bottom */
+    .overlay-panel {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+        padding-left: 0;
+        border-left: none;
+        transform: translateY(100%); /* Slides from bottom */
+        z-index: 1200;
+        transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                    opacity 0.2s linear;
+    }
+    
+    .overlay-panel.active {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    
+    .panel-header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 55px;
+        background-color: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(8px);
+        border-bottom: 1px solid var(--color-border);
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        padding-right: var(--spacing-md);
+        z-index: 10;
+    }
+    
+    .panel-content {
+        padding-top: calc(55px + var(--spacing-md));
+        padding-left: var(--spacing-md);
+        padding-right: var(--spacing-md);
+        padding-bottom: var(--spacing-xl);
+    }
+
+    /* Mobile grids */
+    .gallery-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+    }
+    
+    .gallery-item:nth-child(odd) .image-wrapper,
+    .gallery-item .image-wrapper {
+        aspect-ratio: 4 / 3; /* Match ratios on mobile for consistency */
+    }
+    
+    .info-columns {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+
+    /* Project Detail Mobile Adjustments */
+    .detail-header {
+        padding-left: 0;
+        height: 55px;
+    }
+    
+    .detail-title-nav {
+        font-size: 1.25rem;
+        padding-left: var(--spacing-md);
+    }
+    
+    .detail-header .close-btn {
+        margin-right: var(--spacing-md);
+    }
+    
+    .detail-content {
+        padding-top: calc(55px + var(--spacing-md));
+    }
+    
+    .detail-meta-section {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-xs);
+    }
+    
+    .detail-gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-sm);
+    }
+    
+    .italic-quote {
+        font-size: 1.4rem;
+        padding: 0 var(--spacing-md);
+    }
+}
