@@ -620,6 +620,145 @@ hr {
 }
 
 /* ==========================================================================
+   SOUNDTRACK / CUSTOM MP3 PLAYER
+   ========================================================================== */
+
+.soundtrack-divider {
+    background: rgba(0, 0, 0, 0.15); /* matching --color-border */
+    border: 0;
+    height: 1px;
+    display: block;
+    margin-top: var(--spacing-xl);
+    margin-bottom: var(--spacing-lg);
+}
+
+.soundtrack-section {
+    margin-bottom: var(--spacing-xl);
+    display: flex;
+    flex-direction: column;
+}
+
+.audio-player-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.9rem 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.audio-player-row:last-child {
+    border-bottom: none;
+}
+
+.audio-track-title {
+    font-size: 1.15rem;
+    font-weight: 500;
+    color: var(--color-text);
+    flex-grow: 1;
+    margin-right: 2rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.audio-controls {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    width: 320px;
+    flex-shrink: 0;
+}
+
+.audio-play-btn {
+    background: none;
+    border: none;
+    padding: 0;
+    width: 24px;
+    height: 24px;
+    color: var(--color-text);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: opacity 0.1s ease-in-out;
+}
+
+.audio-play-btn:hover {
+    opacity: 0.7;
+}
+
+.play-icon {
+    width: 18px;
+    height: 18px;
+    display: block;
+}
+
+.play-icon path {
+    transition: d 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.audio-progress-container {
+    flex-grow: 1;
+    height: 20px; /* large interactive hit target */
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+    user-select: none;
+}
+
+.audio-progress-bg {
+    width: 100%;
+    height: 2px;
+    background-color: rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.audio-progress-fill {
+    height: 100%;
+    width: 0%;
+    background-color: var(--color-text);
+    position: absolute;
+    left: 0;
+    top: 0;
+    transition: width 0.1s linear;
+}
+
+/* Disable transition during active dragging/scrubbing for instant response */
+.audio-progress-container.dragging .audio-progress-fill {
+    transition: none;
+}
+
+.audio-progress-fill::after {
+    content: '';
+    position: absolute;
+    right: -4px;
+    top: -3px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--color-text);
+    opacity: 0;
+    transition: opacity 0.15s ease-in-out;
+}
+
+.audio-progress-container:hover .audio-progress-fill::after,
+.audio-progress-container.dragging .audio-progress-fill::after {
+    opacity: 1;
+}
+
+.audio-timestamp {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    font-weight: 500;
+    width: 38px;
+    text-align: right;
+    flex-shrink: 0;
+    font-variant-numeric: tabular-nums;
+}
+
+/* ==========================================================================
    RESPONSIVE DESIGN (F298 Vertical Stack on Mobile)
    ========================================================================== */
 
@@ -800,5 +939,24 @@ hr {
     .detail-quote-italic {
         font-size: 1.4rem;
         padding: 0 1rem;
+    }
+
+    /* Soundtrack mobile adjustments */
+    .audio-player-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.6rem;
+        padding: 1.2rem 0;
+    }
+    
+    .audio-track-title {
+        margin-right: 0;
+        width: 100%;
+        font-size: 1.1rem;
+    }
+    
+    .audio-controls {
+        width: 100%;
+        gap: 1rem;
     }
 }

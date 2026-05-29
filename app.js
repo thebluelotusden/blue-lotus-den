@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initClock();
     initRouter();
     initInteraction();
+    initAudioPlayers();
 });
 
 /* ==========================================================================
@@ -57,6 +58,9 @@ function handleRoute() {
     [navTriumph, navLonelyGuy, navInfo].forEach(n => {
         if (n) n.classList.remove('active');
     });
+    
+    // Stop any playing audio when switching sections or closing
+    stopAllAudio();
     
     // Hide clock when panel overlays are open
     if (hash === '#triumph' || hash === '#lonely-guy' || hash === '#information') {
@@ -123,5 +127,131 @@ function initInteraction() {
                 });
             }
         });
+    });
+}
+
+/* ==========================================================================
+   4. CUSTOM AUDIO PLAYERS (Soundtrack)
+   ========================================================================== */
+function initAudioPlayers() {
+    const rows = document.querySelectorAll('.audio-player-row');
+    if (!rows.length) return;
+    
+    let activeDragPlayer = null;
+    
+    function formatTime(seconds) {
+        if (isNaN(seconds)) return '00:00';
+        const m = Math.floor(seconds / 60);
+        const s = Math.floor(seconds % 60);
+        return `${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+    }
+    
+    rows.forEach(row => {
+        const audio = row.querySelector('audio');
+        const playBtn = row.querySelector('.audio-play-btn');
+        const progressContainer = row.querySelector('.audio-progress-container');
+        const progressFill = row.querySelector('.audio-progress-fill');
+        const timestamp = row.querySelector('.audio-timestamp');
+        
+        if (!audio || !playBtn || !progressContainer || !progressFill || !timestamp) return;
+        
+        // Play/Pause button click
+        playBtn.addEventListener('click', () => {
+            if (audio.paused) {
+                // Pause all other audios
+                rows.forEach(otherRow => {
+                    const otherAudio = otherRow.querySelector('audio');
+                    if (otherAudio && otherAudio !== audio) {
+                        otherAudio.pause();
+                    }
+                });
+                audio.play();
+            } else {
+                audio.pause();
+            }
+        });
+        
+        // Audio state events
+        audio.addEventListener('play', () => {
+            playBtn.classList.add('playing');
+        });
+        
+        audio.addEventListener('pause', () => {
+            playBtn.classList.remove('playing');
+        });
+        
+        audio.addEventListener('ended', () => {
+            playBtn.classList.remove('playing');
+            progressFill.style.width = '0%';
+            timestamp.textContent = '00:00';
+        });
+        
+        audio.addEventListener('timeupdate', () => {
+            if (activeDragPlayer !== dragController) {
+                const percentage = (audio.currentTime / audio.duration) * 100 || 0;
+                progressFill.style.width = percentage + '%';
+                timestamp.textContent = formatTime(audio.currentTime);
+            }
+        });
+        
+        // Handle metadata loaded (for duration setup)
+        audio.addEventListener('loadedmetadata', () => {
+            timestamp.textContent = formatTime(audio.currentTime);
+        });
+        
+        // Drag controller object for this player
+        const dragController = {
+            getPercentage(e) {
+                const rect = progressContainer.getBoundingClientRect();
+                const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+                let percentage = (clientX - rect.left) / rect.width;
+                return Math.max(0, Math.min(1, percentage));
+            },
+            startDrag(e) {
+                activeDragPlayer = dragController;
+                progressContainer.classList.add('dragging');
+                dragController.updateDrag(e);
+                e.preventDefault();
+            },
+            updateDrag(e) {
+                const percentage = dragController.getPercentage(e);
+                progressFill.style.width = (percentage * 100) + '%';
+                if (audio.duration) {
+                    timestamp.textContent = formatTime(percentage * audio.duration);
+                }
+            },
+            endDrag(e) {
+                progressContainer.classList.remove('dragging');
+                const percentage = dragController.getPercentage(e);
+                if (audio.duration) {
+                    audio.currentTime = percentage * audio.duration;
+                }
+                activeDragPlayer = null;
+            }
+        };
+        
+        progressContainer.addEventListener('mousedown', (e) => dragController.startDrag(e));
+        progressContainer.addEventListener('touchstart', (e) => dragController.startDrag(e), { passive: false });
+    });
+    
+    // Global drag handlers
+    window.addEventListener('mousemove', (e) => {
+        if (activeDragPlayer) activeDragPlayer.updateDrag(e);
+    });
+    window.addEventListener('mouseup', (e) => {
+        if (activeDragPlayer) activeDragPlayer.endDrag(e);
+    });
+    window.addEventListener('touchmove', (e) => {
+        if (activeDragPlayer) activeDragPlayer.updateDrag(e);
+    }, { passive: true });
+    window.addEventListener('touchend', (e) => {
+        if (activeDragPlayer) activeDragPlayer.endDrag(e);
+    });
+}
+
+function stopAllAudio() {
+    const audios = document.querySelectorAll('.audio-player-row audio');
+    audios.forEach(audio => {
+        audio.pause();
     });
 }
