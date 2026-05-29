@@ -457,13 +457,20 @@ hr {
     text-decoration: none;
 }
 
+.detail-hero-section {
+    display: flex;
+    gap: var(--spacing-lg);
+    align-items: flex-start;
+    margin-bottom: var(--spacing-lg);
+}
+
 .detail-hero-wrapper {
-    width: 100%;
-    max-width: 550px;
-    aspect-ratio: 2 / 3; /* Portrait poster aspect ratio */
+    width: 300px;
+    max-width: 100%;
+    aspect-ratio: 3 / 4; /* Portrait 600x800 aspect ratio */
     overflow: hidden;
     background-color: #f7f7f7;
-    margin-bottom: var(--spacing-lg);
+    flex-shrink: 0;
 }
 
 .detail-hero-image {
@@ -473,20 +480,57 @@ hr {
     display: block;
 }
 
-/* Overview section side by side grid layout */
 .detail-overview-set {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    gap: 1rem;
-    margin-bottom: var(--spacing-lg);
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
 }
 
 .detail-overview-label {
-    grid-column: span 3;
+    display: block;
 }
 
 .detail-overview-body {
-    grid-column: span 9;
+    display: block;
+}
+
+/* Custom Close Button & Top Link */
+.close-btn {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    font-family: var(--font-sans);
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--color-text);
+    cursor: pointer;
+    text-decoration: none;
+    line-height: inherit;
+}
+
+.close-btn:hover {
+    opacity: 0.7;
+}
+
+.top-link-wrapper {
+    margin-top: var(--spacing-xl);
+    display: flex;
+    justify-content: flex-start;
+}
+
+.top-link {
+    font-family: var(--font-sans);
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--color-text);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.top-link:hover {
+    opacity: 0.7;
 }
 
 .detail-grid-title {
@@ -693,6 +737,18 @@ hr {
         font-size: 1.1rem;
     }
     
+    .detail-hero-section {
+        flex-direction: column;
+        gap: var(--spacing-md);
+        margin-bottom: var(--spacing-md);
+    }
+
+    .detail-hero-wrapper {
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
+    }
+
     .detail-overview-set {
         display: flex;
         flex-direction: column;
