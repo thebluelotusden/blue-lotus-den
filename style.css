@@ -3,25 +3,24 @@
    ========================================================================== */
 
 :root {
-    /* Color Palette */
+    /* Color Palette matching F298 exactly */
     --color-bg: #ffffff;
-    --color-text: rgba(0, 0, 0, 0.85);       /* Premium high-contrast charcoal */
-    --color-text-dim: rgba(0, 0, 0, 0.75);   /* Secondary body text */
-    --color-text-muted: rgba(0, 0, 0, 0.4);  /* Clock and decorative elements */
-    --color-border: rgba(0, 0, 0, 0.15);     /* Panel borders and separators */
-    --color-hover: rgba(0, 0, 0, 0.6);
+    --color-text: rgba(0, 0, 0, 0.85);       /* F298 main body color */
+    --color-text-dim: rgba(0, 0, 0, 0.75);   /* F298 caption color */
+    --color-text-muted: rgba(0, 0, 0, 0.4);  /* F298 sub text / digital-clock */
+    --color-border: rgba(0, 0, 0, 0.15);     /* F298 border lines */
     
     /* Typography */
     --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     --font-serif: 'Cormorant Garamond', Georgia, serif;
     
     /* Spacing & Layout */
-    --spacing-xs: 0.5rem;
+    --spacing-xs: 0.25rem;
     --spacing-sm: 1rem;
-    --spacing-md: 1.5rem;
-    --spacing-lg: 2rem;
+    --spacing-md: 1.4rem;
+    --spacing-lg: 1.5rem;
     --spacing-xl: 3rem;
-    --sidebar-width: 44%; /* Percent of screen for the fixed layout on desktop */
+    --sidebar-width: 44%; /* Desktop profile page width constraint */
 }
 
 /* ==========================================================================
@@ -34,15 +33,20 @@
     padding: 0;
 }
 
+:focus {
+    outline: 0;
+}
+
 html, body {
     background-color: var(--color-bg);
     color: var(--color-text);
     font-family: var(--font-sans);
     font-size: 16px;
-    line-height: 1.25;
+    line-height: 1.2;
     min-height: 100vh;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: none;
 }
 
 body {
@@ -50,7 +54,7 @@ body {
 }
 
 /* ==========================================================================
-   TYPOGRAPHY UTILITIES
+   TYPOGRAPHY (Matching F298 Stylesheet)
    ========================================================================== */
 
 h1, h2, h3, h4, h5, h6 {
@@ -58,85 +62,88 @@ h1, h2, h3, h4, h5, h6 {
     margin: 0;
 }
 
+/* h1 / logo-link */
 .site-title {
     font-family: var(--font-sans);
     font-size: 3.5rem;
     font-weight: 700;
-    line-height: 0.8;
-    letter-spacing: -0.02em;
-    text-transform: none;
+    line-height: 0.795; /* Exact line-height from F298 style */
+    letter-spacing: 0;
     margin-bottom: var(--spacing-lg);
 }
 
 .site-title a {
-    color: var(--color-text);
+    color: rgba(0, 0, 0, 0.8);
     text-decoration: none;
-    transition: opacity 0.2s ease;
 }
 
-.site-title a:hover {
-    opacity: 0.7;
-}
-
+/* h2 / editorial serif */
 .editorial-heading {
     font-family: var(--font-serif);
-    font-size: 2.2rem;
-    font-weight: 300;
+    font-size: 2.4rem;
+    font-weight: 350; /* Exact F298 weight for Marist Variable */
     font-style: italic;
-    line-height: 1.15;
-    color: var(--color-text-dim);
+    line-height: 1.2;
+    color: rgba(0, 0, 0, 0.8);
     margin-bottom: var(--spacing-md);
 }
 
+/* bodycopy paragraphs and links */
 .body-copy {
-    font-family: var(--font-sans);
-    font-size: 1.125rem;
-    font-weight: 400;
-    line-height: 1.35;
-    color: var(--color-text-dim);
+    font-size: 1.15rem; /* F298 standard bodycopy size */
+    font-weight: 500;
+    color: var(--color-text);
+    line-height: 1.2;
     margin-bottom: var(--spacing-md);
 }
 
-.body-copy:last-child {
-    margin-bottom: 0;
+.body-copy a {
+    color: var(--color-text);
+    text-decoration: none;
+    border-bottom: 0px solid rgba(127, 127, 127, 0.2);
 }
 
+/* captions (smaller description texts) */
 .caption {
-    font-family: var(--font-sans);
-    font-size: 0.825rem;
+    font-size: 0.833rem; /* F298 exact caption size */
     font-weight: 400;
-    line-height: 1.25;
     color: var(--color-text-dim);
-    letter-spacing: -0.01em;
+    line-height: 1.2;
+    letter-spacing: -0.009em;
+    display: block;
 }
 
+.caption a {
+    color: var(--color-text-dim);
+    text-decoration: none;
+}
+
+/* small-caps lowercase */
 .small-caps {
     font-variant: small-caps;
     text-transform: lowercase;
-    font-family: var(--font-sans);
     font-weight: 600;
     font-size: 0.875rem;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.03em;
     color: var(--color-text-dim);
 }
 
 a {
-    color: inherit;
-    text-decoration: none;
-    transition: opacity 0.2s ease;
+    transition: opacity 0.1s ease-in-out;
 }
 
-a:hover {
-    opacity: 0.7;
+a:active {
+    opacity: 0.7; /* F298 click opacity active feedback */
 }
 
+/* separators */
 hr {
-    border: none;
-    border-top: 1px solid var(--color-text);
+    background: rgba(0, 0, 0, 0.7); /* F298 hr rule color */
+    border: 0;
     height: 1px;
-    margin-top: var(--spacing-lg);
-    margin-bottom: var(--spacing-xs);
     display: block;
+    margin-top: 1.4rem;
+    margin-bottom: 0.25rem;
 }
 
 /* ==========================================================================
@@ -145,23 +152,22 @@ hr {
 
 .pinned-top-right {
     position: fixed;
-    top: var(--spacing-md);
-    right: var(--spacing-md);
+    top: var(--spacing-lg);
+    right: var(--spacing-lg);
     z-index: 1000;
     text-align: right;
-    pointer-events: none; /* Allows clicking through if background element is present */
+    pointer-events: none;
 }
 
 .digital-clock {
     font-family: var(--font-sans);
-    font-size: 1rem;
+    font-size: 1.15rem;
     color: var(--color-text-muted);
-    font-weight: 400;
-    letter-spacing: 0.02em;
+    font-weight: 500;
 }
 
 /* ==========================================================================
-   LAYOUT STRUCTURE
+   LAYOUT STRUCTURE (Profile sidebar)
    ========================================================================== */
 
 .content-wrapper {
@@ -170,28 +176,29 @@ hr {
     min-height: 100vh;
 }
 
-/* Main Profile / Sidebar Layout */
 .profile-section {
     width: var(--sidebar-width);
-    padding: var(--spacing-xl) var(--spacing-lg) var(--spacing-xl) var(--spacing-md);
+    padding: var(--spacing-lg);
     position: fixed;
     left: 0;
     top: 0;
     height: 100vh;
     overflow-y: auto;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start; /* Aligns left column to left, F298 style */
+    z-index: 100;
 }
 
 .sidebar-layout {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
-    gap: var(--spacing-md);
-    height: 100%;
-    align-content: flex-start;
+    gap: 1rem;
+    width: 100%;
 }
 
-/* Navigation Unit (Left Column of Sidebar) */
 .navigation-unit {
-    grid-column: span 4;
+    grid-column: span 4; /* Spans 4/12 of profile section width */
 }
 
 .site-nav ul {
@@ -199,138 +206,137 @@ hr {
 }
 
 .site-nav li {
-    font-size: 1.1rem;
-    line-height: 1.4;
-    margin-bottom: 0.25rem;
+    font-size: 1.15rem;
+    line-height: 1.2;
+    margin-bottom: 0.15rem;
 }
 
 .site-nav li a {
     color: var(--color-text);
     font-weight: 500;
+    text-decoration: none;
 }
 
 .site-nav li a.active {
     font-weight: 700;
-    text-decoration: underline;
-    text-underline-offset: 4px;
 }
 
 .site-nav .nav-spacer {
-    height: var(--spacing-sm);
+    height: var(--spacing-lg);
 }
 
-/* Intro Unit (Right Column of Sidebar) */
 .intro-unit {
-    grid-column: span 8;
-    padding-top: 0.25rem; /* Slight adjustment to align with navigation top */
+    grid-column: span 8; /* Spans 8/12 of profile section width */
+    padding-top: 0.1rem;
 }
 
 /* ==========================================================================
-   DYNAMIC PANELS (Right Overlays)
+   DYNAMIC PANELS (F298 64% width desktop right alignment)
    ========================================================================== */
 
 .overlay-panel {
     position: fixed;
     top: 0;
-    right: 0;
-    bottom: 0;
     left: 0;
+    width: 100vw;
+    height: 100vh;
     z-index: 500;
-    background-color: var(--color-bg);
-    border-left: 1px solid var(--color-border);
-    padding-left: var(--sidebar-width); /* Push panel content to the right side */
-    
-    /* Animation State (Hidden by default) */
-    opacity: 0;
-    pointer-events: none;
-    transform: translateX(30px);
-    transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-                transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    pointer-events: none; /* Let clicks pass to the backdrop link */
+    display: flex;
+    justify-content: flex-end; /* Aligns page content to the right edge */
 }
 
-.overlay-panel.active {
-    opacity: 1;
-    pointer-events: auto;
+/* Transparent backdrop behind the panel for clickout detection */
+.panel-backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    pointer-events: auto; /* Clickable */
+}
+
+/* 64% layout wrapper with 10rem left margin padding */
+.panel-wrapper {
+    width: 64vw;
+    height: 100%;
+    padding-left: 10rem; /* Transparent offset spacing revealing sidebar */
+    padding-top: var(--spacing-lg);
+    padding-bottom: var(--spacing-lg);
+    display: flex;
+    flex-direction: column;
+    pointer-events: none; /* Let backdrop click work through layout edges */
+    
+    /* Animation state (Translates out off-screen to the right) */
+    transform: translateX(100%);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.overlay-panel.active .panel-wrapper {
     transform: translateX(0);
 }
 
-/* Custom Scrollbar for scrollable panels */
-.panel-content {
+/* Actual white panel content with solid border line */
+.panel-content-inner {
+    background-color: #ffffff;
+    border-left: 0.1rem solid var(--color-border);
+    width: 100%;
     height: 100%;
     overflow-y: auto;
-    padding: var(--spacing-xl) var(--spacing-lg) var(--spacing-xl) var(--spacing-lg);
-    -webkit-overflow-scrolling: touch;
+    pointer-events: auto; /* Handles its own scrolling and clicks */
+    padding: 1.5rem;
+    scrollbar-width: none; /* Hide scrollbars, F298 style */
+    -ms-overflow-style: none;
 }
 
+.panel-content-inner::-webkit-scrollbar {
+    display: none; /* Hide scrollbars in Chrome/Safari */
+}
+
+/* Close button inside overlays (Back/Close links) */
 .panel-header {
-    position: absolute;
-    top: var(--spacing-md);
-    right: var(--spacing-lg);
-    z-index: 510;
     display: flex;
     justify-content: flex-end;
-    width: auto;
-}
-
-/* Panel Close Button */
-.close-btn {
-    background: none;
-    border: none;
-    font-family: var(--font-sans);
-    font-size: 1.1rem;
-    font-weight: 500;
-    color: var(--color-text);
-    cursor: pointer;
-    padding: var(--spacing-xs);
-    transition: opacity 0.2s ease;
-}
-
-.close-btn:hover {
-    opacity: 0.7;
-}
-
-/* Top Link (Return to Top) */
-.top-link-wrapper {
-    display: flex;
-    justify-content: center;
-    margin-top: var(--spacing-xl);
-}
-
-.top-link {
-    font-family: var(--font-sans);
-    font-size: 0.875rem;
-    color: var(--color-text-dim);
-    font-weight: 500;
+    margin-bottom: var(--spacing-lg);
 }
 
 /* ==========================================================================
-   PROJECTS PANEL: GALLERY GRID
+   PROJECTS GALLERY GRID (Uneven Mixed Aspect Ratios)
    ========================================================================== */
 
 .gallery-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: var(--spacing-lg);
+    gap: 1rem;
 }
 
 .gallery-item {
     display: flex;
     flex-direction: column;
     cursor: pointer;
+    margin-bottom: var(--spacing-lg);
 }
 
 .image-wrapper {
     width: 100%;
     overflow: hidden;
     background-color: #f7f7f7;
-    margin-bottom: var(--spacing-xs);
     position: relative;
-    aspect-ratio: 4 / 3; /* Unified ratio for clean grid; will adjust based on actual design */
+    margin-bottom: 0.6rem;
 }
 
-/* Handles portrait aspect ratios beautifully */
-.gallery-item:nth-child(odd) .image-wrapper {
+/* Aspect ratio helpers for gallery items matching F298 ratios */
+.image-wrapper.portrait {
     aspect-ratio: 2 / 3;
+}
+
+.image-wrapper.landscape {
+    aspect-ratio: 3 / 2;
+}
+
+.image-wrapper.square {
+    aspect-ratio: 1 / 1;
 }
 
 .gallery-image {
@@ -338,29 +344,24 @@ hr {
     height: 100%;
     object-fit: cover;
     display: block;
-    transition: filter 0.3s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: opacity 0.1s ease-in-out;
 }
 
-.gallery-item:hover .gallery-image {
-    filter: brightness(0.95);
-    transform: scale(1.02);
-}
-
-.gallery-item .caption {
-    margin-top: 0.25rem;
-    pointer-events: none; /* Let clicks pass through to gallery-item */
+.gallery-item:active .gallery-image {
+    opacity: 0.7; /* F298 active image state */
 }
 
 /* ==========================================================================
-   INFORMATION PANEL: GRID & STRUCTURE
+   INFORMATION PAGE COLUMNS
    ========================================================================== */
 
 .info-content {
-    max-width: 1000px;
+    display: flex;
+    flex-direction: column;
 }
 
 .info-intro {
-    max-width: 600px;
+    max-width: 100%;
     margin-bottom: var(--spacing-lg);
 }
 
@@ -368,14 +369,15 @@ hr {
     width: 100%;
     aspect-ratio: 3 / 2;
     overflow: hidden;
-    margin-bottom: var(--spacing-xl);
     background-color: #f7f7f7;
+    margin-bottom: var(--spacing-xl);
 }
 
 .info-image {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    display: block;
 }
 
 .info-columns {
@@ -390,10 +392,9 @@ hr {
 }
 
 .info-item {
-    font-family: var(--font-sans);
-    font-size: 1rem;
-    line-height: 1.4;
-    color: var(--color-text-dim);
+    font-size: 1.15rem;
+    line-height: 1.2;
+    color: var(--color-text);
     margin-bottom: var(--spacing-md);
     padding-top: var(--spacing-xs);
 }
@@ -405,116 +406,129 @@ hr {
 }
 
 /* ==========================================================================
-   PROJECT DETAIL PANEL
+   PROJECT DETAIL LAYOUT (Inline Scrolling, F298 Style)
    ========================================================================== */
 
-.detail-panel {
-    z-index: 600; /* Sits on top of the regular panels */
-}
-
-.detail-header {
-    position: fixed;
-    top: 0;
-    right: 0;
-    left: 0;
-    padding-left: var(--sidebar-width);
-    height: 60px;
-    background-color: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(8px);
+.detail-inline-header {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid var(--color-border);
-    z-index: 610;
+    align-items: flex-start;
+    margin-bottom: var(--spacing-lg);
 }
 
-.detail-title-nav {
-    font-family: var(--font-serif);
-    font-size: 1.5rem;
-    font-style: italic;
+.detail-title-work {
+    font-family: var(--font-sans);
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--color-text);
+    display: block;
+}
+
+.detail-completed-time {
+    font-family: var(--font-sans);
+    font-size: 1.15rem;
+    font-weight: 500;
+    color: var(--color-text-muted);
+    display: block;
+}
+
+.detail-back-link {
+    font-family: var(--font-sans);
+    font-size: 1.15rem;
     font-weight: 500;
     color: var(--color-text);
-    padding-left: var(--spacing-lg);
+    text-decoration: none;
 }
 
-.detail-header .close-btn {
-    margin-right: var(--spacing-lg);
-}
-
-.detail-content {
-    padding-top: calc(60px + var(--spacing-lg));
-}
-
-.hero-image-wrapper {
+.detail-hero-wrapper {
     width: 100%;
     aspect-ratio: 3 / 2;
     overflow: hidden;
-    margin-bottom: var(--spacing-xl);
     background-color: #f7f7f7;
+    margin-bottom: var(--spacing-lg);
 }
 
 .detail-hero-image {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    display: block;
 }
 
-.detail-meta-section {
+/* Overview section side by side grid layout */
+.detail-overview-set {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
-    gap: var(--spacing-md);
-    margin-bottom: var(--spacing-xl);
-}
-
-.detail-meta-col:first-child {
-    grid-column: span 3;
-}
-
-.detail-meta-col:last-child {
-    grid-column: span 9;
-}
-
-.caption-label {
-    font-family: var(--font-sans);
-    font-weight: 600;
-    font-size: 0.875rem;
-    letter-spacing: 0.02em;
-    color: var(--color-text-dim);
-    text-transform: uppercase;
-}
-
-.detail-grid-header {
-    border-bottom: 1px solid var(--color-border);
-    padding-bottom: var(--spacing-xs);
+    gap: 1rem;
     margin-bottom: var(--spacing-lg);
 }
 
-.detail-gallery-grid {
+.detail-overview-label {
+    grid-column: span 3;
+}
+
+.detail-overview-body {
+    grid-column: span 9;
+}
+
+.detail-grid-title {
+    margin-top: var(--spacing-lg);
+    margin-bottom: 0.6rem;
+}
+
+.detail-thumbnails-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: var(--spacing-md);
+    gap: 1rem;
     margin-bottom: var(--spacing-xl);
 }
 
-.detail-gallery-grid .image-wrapper {
-    aspect-ratio: 2 / 3; /* Portrait style details */
+.detail-thumbnails-grid .image-wrapper {
     margin-bottom: 0;
 }
 
-.detail-footer-quote {
+/* Centered Quote Block */
+.detail-quote-section {
     padding: var(--spacing-xl) 0;
     text-align: center;
-    border-top: 1px solid var(--color-border);
 }
 
-.italic-quote {
-    font-size: 1.8rem;
+.detail-quote-italic {
+    font-family: var(--font-serif);
+    font-size: 2.2rem;
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.2;
+    color: rgba(0, 0, 0, 0.8);
     max-width: 600px;
     margin: 0 auto;
 }
 
+.detail-footer-image-wrapper {
+    width: 100%;
+    aspect-ratio: 3 / 2;
+    overflow: hidden;
+    background-color: #f7f7f7;
+    margin-bottom: 0.6rem;
+}
+
+.detail-footer-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.detail-footer-caption {
+    margin-bottom: var(--spacing-xl);
+}
+
+.detail-footer-caption .caption {
+    color: var(--color-text-muted);
+}
+
 /* ==========================================================================
-   RESPONSIVE DESIGN & MOBILE OPTIMIZATIONS
+   RESPONSIVE DESIGN (F298 Vertical Stack on Mobile)
    ========================================================================== */
 
 @media (max-width: 1024px) {
@@ -526,30 +540,30 @@ hr {
 @media (max-width: 768px) {
     :root {
         --spacing-md: 1rem;
-        --spacing-lg: 1.5rem;
-        --spacing-xl: 2.5rem;
+        --spacing-lg: 1rem;
+        --spacing-xl: 2rem;
     }
     
     html, body {
-        font-size: 15px;
+        font-size: 15px; /* Adjust slightly for mobile readability */
     }
     
-    /* Live clock layout adjustments */
+    /* Live Clock Top Right mobile placement */
     .pinned-top-right {
-        top: 0.75rem;
+        top: 0.8rem;
         right: 1rem;
     }
     
     .digital-clock {
-        font-size: 0.875rem;
+        font-size: 1rem;
     }
 
-    /* Stack sidebar and content sections vertically */
+    /* Stack Profile page vertically */
     .profile-section {
         position: relative;
         width: 100%;
         height: auto;
-        padding: var(--spacing-xl) var(--spacing-md) var(--spacing-lg) var(--spacing-md);
+        padding: var(--spacing-xl) 1rem 1rem 1rem;
     }
     
     .sidebar-layout {
@@ -585,99 +599,96 @@ hr {
         font-size: 1.8rem;
     }
 
-    /* Overlay panels become full screen mobile drawers sliding from the bottom */
+    /* Mobile Overlays: Full View slide-ups from bottom */
     .overlay-panel {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
+        z-index: 1200;
+        pointer-events: auto; /* Active panel controls its overlay space */
+    }
+    
+    .panel-backdrop {
+        /* Backdrop darkens slightly on mobile view or stays clean */
+        background-color: rgba(255, 255, 255, 0.9);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        pointer-events: none;
+    }
+    
+    .overlay-panel.active .panel-backdrop {
+        opacity: 1;
+        pointer-events: auto;
+    }
+    
+    .panel-wrapper {
+        width: 100vw;
+        height: 100%;
+        padding-left: 0; /* Remove 10rem gap for full mobile width */
+        padding-top: 0;
+        padding-bottom: 0;
+        transform: translateY(100%); /* Slide up from bottom on mobile */
+        transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    
+    .overlay-panel.active .panel-wrapper {
+        transform: translateY(0);
+    }
+    
+    .panel-content-inner {
+        border-left: none;
         width: 100%;
         height: 100%;
-        padding-left: 0;
-        border-left: none;
-        transform: translateY(100%); /* Slides from bottom */
-        z-index: 1200;
-        transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-                    opacity 0.2s linear;
-    }
-    
-    .overlay-panel.active {
-        transform: translateY(0);
-        opacity: 1;
-    }
-    
-    .panel-header {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 55px;
-        background-color: rgba(255, 255, 255, 0.95);
-        backdrop-filter: blur(8px);
-        border-bottom: 1px solid var(--color-border);
-        display: flex;
-        align-items: center;
-        justify-content: flex-end;
-        padding-right: var(--spacing-md);
-        z-index: 10;
-    }
-    
-    .panel-content {
-        padding-top: calc(55px + var(--spacing-md));
-        padding-left: var(--spacing-md);
-        padding-right: var(--spacing-md);
+        padding: 1rem;
         padding-bottom: var(--spacing-xl);
     }
 
-    /* Mobile grids */
+    /* Stack grids vertically on mobile */
     .gallery-grid {
         grid-template-columns: 1fr;
-        gap: var(--spacing-lg);
+        gap: 1.5rem;
     }
     
-    .gallery-item:nth-child(odd) .image-wrapper,
-    .gallery-item .image-wrapper {
-        aspect-ratio: 4 / 3; /* Match ratios on mobile for consistency */
+    .gallery-item {
+        margin-bottom: 0;
+    }
+    
+    .image-wrapper.portrait,
+    .image-wrapper.landscape,
+    .image-wrapper.square {
+        aspect-ratio: 4 / 3; /* Unified ratio for cleaner mobile flow */
     }
     
     .info-columns {
         grid-template-columns: 1fr;
-        gap: var(--spacing-md);
+        gap: 1rem;
     }
 
-    /* Project Detail Mobile Adjustments */
-    .detail-header {
-        padding-left: 0;
-        height: 55px;
+    /* Detail Page Mobile Refinements */
+    .detail-inline-header {
+        margin-top: 0.5rem;
+        margin-bottom: 1rem;
     }
     
-    .detail-title-nav {
-        font-size: 1.25rem;
-        padding-left: var(--spacing-md);
+    .detail-title-work {
+        font-size: 1.1rem;
     }
     
-    .detail-header .close-btn {
-        margin-right: var(--spacing-md);
+    .detail-completed-time {
+        font-size: 1.1rem;
     }
     
-    .detail-content {
-        padding-top: calc(55px + var(--spacing-md));
-    }
-    
-    .detail-meta-section {
+    .detail-overview-set {
         display: flex;
         flex-direction: column;
-        gap: var(--spacing-xs);
+        gap: 0.4rem;
+        margin-bottom: 1rem;
     }
     
-    .detail-gallery-grid {
+    .detail-thumbnails-grid {
         grid-template-columns: repeat(2, 1fr);
-        gap: var(--spacing-sm);
+        gap: 0.8rem;
     }
     
-    .italic-quote {
+    .detail-quote-italic {
         font-size: 1.4rem;
-        padding: 0 var(--spacing-md);
+        padding: 0 1rem;
     }
 }
