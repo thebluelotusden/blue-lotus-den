@@ -21,3 +21,6 @@ Deployable via GitHub Pages.
 ## Typography
 - Sans-serif: **Inter** (Google Fonts) as a modern neo-grotesque.
 - Serif: **Cormorant Garamond** (Google Fonts) for italicized editorial headings and titles.
+
+## Deployment Status
+- Last deployment trigger: 2026-05-29T11:05:00-04:00
