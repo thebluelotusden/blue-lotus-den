@@ -459,7 +459,8 @@ hr {
 
 .detail-hero-wrapper {
     width: 100%;
-    aspect-ratio: 3 / 2;
+    max-width: 550px;
+    aspect-ratio: 2 / 3; /* Portrait poster aspect ratio */
     overflow: hidden;
     background-color: #f7f7f7;
     margin-bottom: var(--spacing-lg);
