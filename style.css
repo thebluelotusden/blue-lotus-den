@@ -253,10 +253,12 @@ hr {
     display: flex;
     justify-content: flex-end; /* Aligns page content to the right edge */
     visibility: hidden;
+    transition: visibility 0.4s step-end; /* Delay hidden visibility until slide-out finishes */
 }
 
 .overlay-panel.active {
     visibility: visible;
+    transition: visibility 0s step-start; /* Instantly visible when opened */
 }
 
 /* Transparent backdrop behind the panel for clickout detection */
@@ -285,13 +287,19 @@ hr {
     flex-direction: column;
     pointer-events: none; /* Let backdrop click work through layout edges */
     
-    /* Animation state (Translates out off-screen to the right) */
+    /* Animation state (Translates out off-screen to the right, fades and blurs out) */
     transform: translateX(100%);
-    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    opacity: 0;
+    filter: blur(10px);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                filter 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .overlay-panel.active .panel-wrapper {
     transform: translateX(0);
+    opacity: 1;
+    filter: blur(0);
 }
 
 /* Actual white panel content with solid border line */
@@ -709,11 +717,17 @@ hr {
         padding-top: 0;
         padding-bottom: 0;
         transform: translateY(100%); /* Slide up from bottom on mobile */
-        transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        opacity: 0;
+        filter: blur(10px);
+        transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                    opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                    filter 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
     
     .overlay-panel.active .panel-wrapper {
         transform: translateY(0);
+        opacity: 1;
+        filter: blur(0);
     }
     
     .panel-content-inner {
